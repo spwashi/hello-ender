@@ -15,31 +15,31 @@ export function useTenantIndexers(indexedLeaseInfo: IndexedLeaseAggregate | unde
 
     const tenant_nameIndexer: Indexer =
               [
-                  {title: 'Tenant', className: 'tenant'},
+                  {title: 'Tenant', className: 'tenant', attr: 'tenant'},
                   tenant_selectName,
               ];
 
     const tenant_startDateIndexer: Indexer =
               [
-                  {title: 'Start Date', className: 'startDate'},
+                  {title: 'Start Date', className: 'startDate', attr: 'startDate'},
                   tenant_selectStartDate,
               ];
 
     const tenant_endDateIndexer: Indexer =
               [
-                  {title: 'End Date', className: 'endDate'},
+                  {title: 'End Date', className: 'endDate', attr: 'endDate'},
                   tenant_selectEndDate,
               ];
 
     const tenant_leaseStatusIndexer: Indexer =
               [
-                  {title: 'Status', className: 'status'},
+                  {title: 'Status', className: 'status', attr: 'status'},
                   tenant_selectLeaseStatus,
               ];
 
     const tenant_primaryContactIndexer: Indexer =
               [
-                  {title: 'Primary Contact', className: 'primaryContact'},
+                  {title: 'Primary Contact', className: 'primaryContact', attr: 'primaryContact'},
                   _selectPrimaryContact,
               ];
 
