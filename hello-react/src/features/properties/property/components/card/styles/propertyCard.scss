@@ -1,5 +1,4 @@
 .cardContext {
-  border: thick solid red;
   width: 300px;
   display: block;
   position: relative;
@@ -47,12 +46,13 @@
 
   > .head {
     height: 200px;
-    background: blue;
+    background: rgba(#ccc, .3);
     color: white;
 
     .title {
       padding: .5em;
       font-size: 2rem;
+      background: rgba(#333, .7);
     }
   }
 
@@ -72,30 +72,37 @@
 .infoGroup {
   display: flex;
   flex-direction: row;
+  padding: .5rem;
 
   &.address_rent {
-    border: thick solid green;
     display: flex;
     justify-content: space-between;
 
     .address {
       white-space: pre-wrap;
+
+      > div:nth-child(2) {
+        opacity: .6;
+      }
     }
   }
 
   &.sqftMetrics {
-    border: thick solid yellow;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
-    > * {
-      border: thick solid black;
-    }
+    //> * {
+    //}
 
     .sqft { border-color: mediumvioletred;}
 
+    [data-unit] {
+    }
+
     [data-unit]:after {
+      display: block;
+      text-align: right;
       content: ' /' attr(data-unit);
       font-size: .75em;
       opacity: .75;
