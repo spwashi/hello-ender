@@ -5,11 +5,45 @@
   position: relative;
 }
 
-.cardContext .property-body {
-  &:focus-within {
+.property-body:not(.occupied) {
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: green;
+    opacity: .2;
+    height: 100%;
+    width: 100%;
+    content: '';
+  }
+
+  &:after {
+    content: 'Available!';
+    transform: rotate(-30deg);
+    font-weight: bold;
+    font-size: 3rem;
+    color: white;
+    position: absolute;
+    top: 33%;
+    left: 0;
+    right: 0;
+  }
+}
+
+.property-body {
+  &:focus-within, &:hover {
     transform: scale(1.05);
 
+    > button {
+      background: white;
+      opacity: .5;
+    }
   }
+}
+
+.cardContext .property-body {
+  transition: transform .3s;
+
 
   > .head {
     height: 200px;
@@ -32,11 +66,6 @@
     opacity: 0;
     transition: opacity .3s;
     cursor: pointer;
-
-    &:hover {
-      background: white;
-      opacity: .5;
-    }
   }
 }
 

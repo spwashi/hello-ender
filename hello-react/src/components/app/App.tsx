@@ -7,7 +7,7 @@ import ActivationProvider from '../../context/activation/components/Provider';
 import {PropertyContextConsumer} from '../../features/properties/property/context/components/Consumer';
 import {PropertyList} from '../../features/properties/property/components/list/PropertyList';
 import {PropertyLeaseList} from '../../features/properties/property/features/leases/components/PropertyLeaseList';
-
+import {Helmet} from 'react-helmet';
 
 function App() {
     const properties = useEndpointData<I_Property[] | null>(findEndpoint({route: 'properties/'}));
@@ -15,6 +15,7 @@ function App() {
         <div className={styles.app}>
             <main>
                 <h1>Properties</h1>
+
                 <ActivationProvider>
                     <section className={styles.propertyCardListContainer}>
                         <PropertyList properties={properties}/>
@@ -28,6 +29,9 @@ function App() {
                                             return (
                                                 <>
                                                     <h2>{property.name} Leases</h2>
+                                                    <Helmet>
+                                                        <title>{property.name} Leases</title>
+                                                    </Helmet>
                                                     <PropertyLeaseList key={property.id} property={property}/>
                                                 </>
                                             );
