@@ -23,7 +23,6 @@ export function useEndpointData<Return = any>(endpoint: EndpointName | null): Re
                   const body    = JSON.stringify({token});
 
                   fetching.markTrue(endpoint);
-
                   return fetch(endpoint, {method, headers, body})
                       .then(r => r.json())
                       .catch(error => {

@@ -4,123 +4,121 @@ const app     = express();
 
 app.use(cors());
 
-app.post('/properties', (req, res) => {
+app.all('/server/properties', (req, res) => {
+    const name     = 'Property Name'
+    const address1 = '123 Address St.'
+    const address2 = 'City, CA 90210'
     return res.send([
                         {
                             "id":         1,
-                            "name":       "Star Tower",
-                            "address1":   "110 S. Solar Blvd.",
-                            "address2":   "Austin, TX 78746",
-                            "sqft":       12500,
+                            "name":       name,
+                            "address1":   address1,
+                            "address2":   address2,
+                            "sqft":       Math.random() * 1200,
                             "isOccupied": true,
-                            "baseRent":   "$23,000.00"
+                            "baseRent":   "$123,000.00"
                         },
                         {
                             "id":         2,
-                            "name":       "The Brand New Corner Gables",
-                            "address1":   "123 Road Runner Ave.",
-                            "address2":   "Austin, TX 78704",
-                            "sqft":       9000,
+                            "name":       name,
+                            "address1":   address1,
+                            "address2":   address2,
+                            "sqft":       Math.random() * 1500,
                             "isOccupied": false,
-                            "baseRent":   "$17,050.00"
+                            "baseRent":   "$12,345.67"
                         },
                         {
                             "id":         3,
-                            "name":       "Mazer Mall 3",
-                            "address1":   "9848 Bluebonnet St.",
-                            "address2":   "Austin, TX 78709",
-                            "sqft":       7500,
+                            "name":       name,
+                            "address1":   address1,
+                            "address2":   address2,
+                            "sqft":       Math.random() * 900,
                             "isOccupied": true,
-                            "baseRent":   "$14,020.00"
+                            "baseRent":   "$1,020.99"
                         }
                     ])
 });
-app.post('/property-leases', (req, res) => {
+app.all('/server/property-leases', (req, res) => {
+    let phone       = "555-555-555";
+    let name        = "Firstname Lastname";
+    let email       = "name@email.com";
+    let companyName = 'Company Name'
     return res.send({
                         1: [{
-                            "id":               "74fb4c4f",
+                            "id":               Math.random() + '',
                             "status":           "EXPIRED",
-                            "companyName":      "Cat Posters R' Us",
+                            "companyName":      companyName,
                             "startDate":        "2012-04-01",
                             "inclusiveEndDate": "2018-04-30",
                             "contacts":         {
-                                "Hrafn Miomir": {
-                                    "id":    "bcb83cfc",
-                                    "phone": "555-060-3403",
-                                    "email": "hrafn@cprus.com",
-                                    "tags":  ["PRIMARY", "TENANT"]
+                                [name]: {
+                                    "id":   Math.random() + '',
+                                    phone, email,
+                                    "tags": ["PRIMARY", "TENANT"]
                                 }
                             }
                         }, {
-                            "id":               "83e1688c",
+                            "id":               Math.random() + '',
                             "status":           "EXPIRED",
-                            "companyName":      "Mars Travel Agency",
+                            "companyName":      companyName,
                             "startDate":        "2018-06-01",
                             "inclusiveEndDate": "2020-05-31",
                             "contacts":         {
-                                "Kimberly Garland": {
-                                    "id":    "610b27eb",
-                                    "phone": "555-012-0457",
-                                    "email": "kgarland@marsta.com",
-                                    "tags":  ["PRIMARY", "TENANT"]
+                                [name]: {
+                                    "id":   Math.random() + '',
+                                    phone, email,
+                                    "tags": ["PRIMARY", "TENANT"]
                                 },
-                                "Roman Matías":     {
-                                    "id":    "46add1ec",
-                                    "phone": "555-045-7021",
-                                    "email": "rmatias@marsta.com",
-                                    "tags":  ["TENANT, EMERGENCY"]
+                                [name]: {
+                                    "id":   Math.random() + '',
+                                    phone, email,
+                                    "tags": ["TENANT, EMERGENCY"]
                                 }
                             }
                         }, {
-                            "id":               "6b5926d4",
+                            "id":               Math.random() + '',
                             "status":           "ACTIVE",
-                            "companyName":      "Juice for Days",
+                            "companyName":      companyName,
                             "startDate":        "2020-08-01",
                             "inclusiveEndDate": "2028-07-31",
                             "contacts":         {
-                                "Gisila Virva":      {
-                                    "id":    "945638c2",
-                                    "phone": "555-046-2998",
-                                    "email": "gvirva@j4days.com",
-                                    "tags":  ["TENANT"]
+                                [name]: {
+                                    "id":   Math.random() + '',
+                                    phone, email,
+                                    "tags": ["TENANT"]
                                 },
-                                "Masoomeh Narcissa": {
-                                    "id":    "592def02",
-                                    "phone": "555-039-1312",
-                                    "email": "mnarcissa@j4days.com",
-                                    "tags":  ["TENANT"]
+                                [name]: {
+                                    "id":   Math.random() + '',
+                                    phone, email,
+                                    "tags": ["TENANT"]
                                 },
-                                "Enora Jonas":       {
-                                    "id":    "5947fde7",
-                                    "phone": "555-053-6923",
-                                    "email": "ejonas@j4days.com",
-                                    "tags":  ["TENANT"]
+                                [name]: {
+                                    "id":   Math.random() + '',
+                                    phone, email,
+                                    "tags": ["TENANT"]
                                 },
-                                "Rebeca Theodotos":  {
-                                    "id":    "6cec5a40",
-                                    "phone": "555-092-0549",
-                                    "email": "rtheodotos@j4days.com",
-                                    "tags":  ["TENANT"]
+                                [name]: {
+                                    "id":   Math.random() + '',
+                                    phone, email,
+                                    "tags": ["TENANT"]
                                 }
                             }
                         }, {
                             "id":               "727c976d",
                             "status":           "UPCOMING",
-                            "companyName":      "Space Falcon",
+                            "companyName":      companyName,
                             "startDate":        "2022-01-01",
                             "inclusiveEndDate": "2026-12-31",
                             "contacts":         {
-                                "Dorotea Idunn":   {
-                                    "id":    "12b59dc7",
-                                    "phone": "555-854-0507",
-                                    "email": "didunn@spacefalcon.com",
-                                    "tags":  ["TENANT"]
+                                [name]: {
+                                    "id":   Math.random() + '',
+                                    phone, email,
+                                    "tags": ["TENANT"]
                                 },
-                                "Melisende Irena": {
-                                    "id":    "673fb2c3",
-                                    "phone": "555-034-1345",
-                                    "email": "mirena@spacefalcon.com",
-                                    "tags":  ["PRIMARY", "TENANT"]
+                                [name]: {
+                                    "id":   Math.random() + '',
+                                    phone, email,
+                                    "tags": ["PRIMARY", "TENANT"]
                                 }
                             }
                         }],
@@ -128,41 +126,37 @@ app.post('/property-leases', (req, res) => {
                         3: [{
                             "id":               "6f24746f",
                             "status":           "EXPIRED",
-                            "companyName":      "Make It So",
+                            "companyName":      companyName,
                             "startDate":        "2018-10-01",
                             "inclusiveEndDate": "2021-03-31",
                             "contacts":         {
-                                "Elwin Johannes": {
-                                    "id":    "9d1e5f47",
-                                    "phone": "555-604-2394",
-                                    "email": "eljo@makeitso.com",
-                                    "tags":  ["PRIMARY", "TENANT"]
+                                [name]: {
+                                    "id":   Math.random() + '',
+                                    phone, email,
+                                    "tags": ["PRIMARY", "TENANT"]
                                 }
                             }
                         }, {
                             "id":               "ff358dec",
                             "status":           "ACTIVE",
-                            "companyName":      "Galactic Games Inc.",
+                            "companyName":      companyName,
                             "startDate":        "2021-05-01",
                             "inclusiveEndDate": "2024-04-30",
                             "contacts":         {
-                                "Madelon Joel":     {
-                                    "id":    "52650d47",
-                                    "phone": "555-123-4567",
-                                    "email": "mjoel@galacticgames.com",
-                                    "tags":  ["PRIMARY", "TENANT"]
+                                [name]: {
+                                    "id":   Math.random() + '',
+                                    phone, email,
+                                    "tags": ["PRIMARY", "TENANT"]
                                 },
-                                "Anis Sheard":      {
-                                    "id":    "42700d34",
-                                    "phone": "555-345-7621",
-                                    "email": "asheard@galacticgames.com",
-                                    "tags":  ["TENANT"]
+                                [name]: {
+                                    "id":   Math.random() + '',
+                                    phone, email,
+                                    "tags": ["TENANT"]
                                 },
-                                "Laurinda Stefana": {
-                                    "id":    "f1b5a7d4",
-                                    "phone": "555-671-2543",
-                                    "email": "lstefana@galacticgames.com",
-                                    "tags":  ["EMERGENCY"]
+                                [name]: {
+                                    "id":   Math.random() + '',
+                                    phone, email,
+                                    "tags": ["EMERGENCY"]
                                 }
                             }
                         }]

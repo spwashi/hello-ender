@@ -11,7 +11,6 @@ import {PropertyList} from '../../features/properties/property/components/list/P
 
 function App() {
     const properties = useEndpointData<I_Property[] | null>(findEndpoint({route: 'properties/'}));
-
     return (
         <div className={styles.app}>
             <header className={styles.appHeader}>

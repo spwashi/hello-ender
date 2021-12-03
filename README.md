@@ -1,8 +1,13 @@
 # Hey Ender
 
-This is a repository with a few different spins on the coding assessment (I think). 
-I might just spend a while on one version.
+Originally I planned on doing multiple versions of the same app to demonstrate flexibility with different technologies.
 
-I feel like there are some interesting ways to do this though, and I don't mind exploring.
+I still might! But for now, I'm focusing on demonstrating more of product-ownership side of house.
+
+Visit [https://hello-ender.spwashi.com/?hello=ender](https://hello-ender.spwashi.com/?hello=ender) for a demo of the wireframe!
+
+I'll be updating this repository regularly.
 
 ## Check out the git history
+
+I think it lines up pretty well with my thought/organization process.
