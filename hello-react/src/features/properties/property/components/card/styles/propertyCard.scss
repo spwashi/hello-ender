@@ -1,0 +1,60 @@
+.cardContext {
+  border: thick solid red;
+  width: 300px;
+  display: block;
+}
+
+.cardContext .property-body {
+  > .head {
+    height: 200px;
+    background: blue;
+    color: white;
+
+    .title {
+      padding: .5em;
+      font-size: 2rem;
+    }
+  }
+
+  > button {
+    width: 100%;
+  }
+}
+
+.infoGroup {
+  display: flex;
+  flex-direction: row;
+
+  &.address_rent {
+    border: thick solid green;
+    display: flex;
+    justify-content: space-between;
+
+    .address {
+      white-space: pre-wrap;
+    }
+  }
+
+  &.sqftMetrics {
+    border: thick solid yellow;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    > * {
+      border: thick solid black;
+    }
+
+    .sqft { border-color: mediumvioletred;}
+
+    [data-unit]:after {
+      content: ' /' attr(data-unit);
+      font-size: .75em;
+      opacity: .75;
+    }
+
+    .price-sqft-mo { border-color: paleturquoise;}
+
+    .price-sqft-yr { border-color: antiquewhite;}
+  }
+}

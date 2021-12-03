@@ -9,7 +9,7 @@ import {useCallback} from 'react';
  * @constructor
  */
 export function TenantInfo({tenant, indexers}: { tenant: I_Tenant, indexers: Indexer[] }) {
-    const mapper = useCallback(([className, selector]: Indexer) => (
+    const mapper = useCallback(([{className}, selector]: Indexer) => (
         <div className={className} key={className}>
             {selector(tenant)}
         </div>

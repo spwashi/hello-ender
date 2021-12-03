@@ -6,5 +6,5 @@ import {Indexer} from '../data/tenants/indexers';
  * @constructor
  */
 export function TenantInfoIndexerHead({head}: { head: Indexer[0] }) {
-    return <div key={head} className={head}>{head}</div>;
+    return <div key={head.className} className={head.className}>{head.title}</div>;
 }

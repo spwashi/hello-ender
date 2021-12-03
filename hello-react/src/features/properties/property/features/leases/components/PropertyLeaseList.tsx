@@ -18,18 +18,26 @@ export function PropertyLeaseList({property}: { property: Pick<I_Property, 'id'>
 
     if (indexHasError) return <div>Error</div>
 
-
+    const headElements =
+              indexers
+                  .map(indexer =>
+                           <TenantInfoIndexerHead
+                               key={indexer[0].className}
+                               head={indexer[0]}
+                           />);
+    const bodyElements =
+              Object.values(index.contacts)
+                    .map(tenant =>
+                             <TenantInfo
+                                 key={tenant.contact.id}
+                                 tenant={tenant}
+                                 indexers={indexers}
+                             />)
+                    .filter(Boolean);
     return (
         <div className="leaseInfoList byTenant">
-            <div className="head">{
-                indexers
-                    .map(indexer => <TenantInfoIndexerHead key={indexer[0]} head={indexer[0]}/>)
-            }</div>
-            <div className="body">{
-                Object.values(index?.contacts ?? {})
-                      .map(tenant => <TenantInfo key={tenant.contact.id} tenant={tenant} indexers={indexers}/>)
-                      .filter(Boolean)
-            }</div>
+            <div className="head">{headElements}</div>
+            <div className="body">{bodyElements}</div>
         </div>
     )
 }

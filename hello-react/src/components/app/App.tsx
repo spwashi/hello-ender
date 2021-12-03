@@ -1,12 +1,12 @@
 import styles from './styles/App.module.css';
 import {useEndpointData} from '../../core/endpoints/hooks/useEndpointData';
-import {PropertyCard} from '../../features/properties/property/components/PropertyCard';
 import {I_Property} from '../../core/types/models';
 import {findEndpoint} from '../../core/endpoints';
 import {PropertyContextProvider} from '../../features/properties/property/context/components/Provider';
 import ActivationProvider from '../../context/activation/components/Provider';
 import {PropertyContextConsumer} from '../../features/properties/property/context/components/Consumer';
 import {PropertyLeaseList} from '../../features/properties/property/features/leases/components/PropertyLeaseList';
+import {PropertyList} from '../../features/properties/property/components/list/PropertyList';
 
 
 function App() {
@@ -19,15 +19,7 @@ function App() {
             </header>
             <main>
                 <ActivationProvider>
-                    <section className={styles.propertyCardListContainer}>
-                        <ul className={styles.propertyCardList}>{
-                            properties?.map(
-                                property =>
-                                    <li key={property.id}>
-                                        <PropertyCard property={property}/>
-                                    </li>,
-                            )
-                        }</ul>
+                    <section className={styles.propertyCardListContainer}><PropertyList properties={properties}/>
                     </section>
                     <section className={styles.propertyLeaseListContainer}>
                         <PropertyContextProvider>

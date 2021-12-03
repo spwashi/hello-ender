@@ -5,10 +5,9 @@ type EnvVars = {
 };
 type EnvironmentVariable = keyof EnvVars;
 
-console.log(process.env.REACT_APP_TOKEN);
 export const ENV =
                  {
-                     isDev:   true,
+                     isDev:   process.env.REACT_APP_ENVIRONMENT === 'dev',
                      appName: 'hello-ender',
                      token:   process.env.REACT_APP_TOKEN ?? '',
                  } as EnvVars;
