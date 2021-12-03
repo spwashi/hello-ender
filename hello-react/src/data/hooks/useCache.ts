@@ -1,4 +1,4 @@
-import {LOCAL_CACHE_TIME} from '../../util/constants';
+import {LOCAL_CACHE_TIME} from '../../core/constants';
 import {useCallback, useMemo, useRef} from 'react';
 import {useLocalStorage} from '../../util/hooks/useLocalStorage';
 import {prefix} from '../../util';

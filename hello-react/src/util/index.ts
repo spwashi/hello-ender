@@ -1,4 +1,4 @@
-import {APP_STATE_KEY} from './constants';
+import {APP_STATE_KEY} from '../core/constants';
 
 /**
  * A function that adds a prefix to a string.

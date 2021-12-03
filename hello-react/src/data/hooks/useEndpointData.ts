@@ -1,35 +1,22 @@
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 import {useCache} from './useCache';
+import {useEnvironmentVariable} from '../../core/env';
+import {useToggleCallbacks} from '../../util/hooks/useToggleCallbacks';
+import {EndpointName} from '../../core/endpoints/types';
 
-function useToggleCallbacks() {
-    const [fetching, setFetching] = useState({} as { [endpoint: string]: boolean });
-    const isEndpointFetching      = useCallback((endpoint: string) => fetching[endpoint], [fetching]);
-    const markFetchInProgress     =
-              useCallback(
-                  (endpoint: string) =>
-                      setFetching(fetching => ({...fetching, [endpoint]: true})),
-                  [setFetching],
-              );
-    const markFetchCompletion     =
-              useCallback(
-                  (endpoint: string) =>
-                      setFetching(fetching => ({...fetching, [endpoint]: false})),
-                  [setFetching],
-              );
-    ;
-    return useMemo(() => ({
-        isTrue:    isEndpointFetching,
-        markTrue:  markFetchInProgress,
-        markFalse: markFetchCompletion,
-    }), [isEndpointFetching, markFetchInProgress, markFetchCompletion]);
-}
-
-export function useEndpointData<Return = any>(token: string | boolean, endpoint: string): Return {
+/**
+ * Immediately attempt to fetch an endpoint, if it exists
+ *
+ * @param endpoint
+ */
+export function useEndpointData<Return = any>(endpoint: EndpointName | null): Return | null {
+    const token                           = useEnvironmentVariable('token');
     const [endpointData, setEndpointData] = useState(null as Return | null);
     const cache                           = useCache();
     const fetching                        = useToggleCallbacks();
     const errorRef                        = useRef(null as any | null);
-    const fetchEndpoint                   =
+
+    const fetchEndpoint =
               useCallback(async (endpoint: string) => {
                   const method  = 'POST';
                   const headers = {'Content-Type': 'application/json'};
@@ -43,8 +30,10 @@ export function useEndpointData<Return = any>(token: string | boolean, endpoint:
                           throw (errorRef.current = error)
                       });
               }, [token, fetching]);
+
     useEffect(
         () => {
+            if (!endpoint) return;
             if (fetching.isTrue(endpoint)) return;
 
             let cacheIsValid: boolean;
@@ -73,13 +62,14 @@ export function useEndpointData<Return = any>(token: string | boolean, endpoint:
 
             // Fetch the response
             {
-                const handleSuccess = () => fetching.markFalse(endpoint);
-                const handleFailure = () => fetching.markFalse(endpoint);
+                const handleSuccess    = () => fetching.markFalse(endpoint);
+                const handleFailure    = () => fetching.markFalse(endpoint);
+                const cacheEndpointAnd = (payload: any) => {
+                    cache.add(endpoint, payload);
+                    return payload;
+                };
                 fetchedData
-                    .then(function cacheEndpointAnd(payload: any) {
-                        cache.add(endpoint, payload);
-                        return payload;
-                    })
+                    .then(cacheEndpointAnd)
                     .then(setEndpointData)
                     .then(handleSuccess)
                     .catch(handleFailure);
