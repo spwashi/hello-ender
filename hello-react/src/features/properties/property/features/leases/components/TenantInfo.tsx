@@ -10,7 +10,7 @@ import {useCallback} from 'react';
  */
 export function TenantInfo({tenant, indexers}: { tenant: I_Tenant, indexers: Indexer[] }) {
     const mapper = useCallback(([{className}, selector]: Indexer) => (
-        <div className={className} key={className}>
+        <div className={className} key={className} itemScope itemType="https://schema.org/Person">
             {selector(tenant)}
         </div>
     ), []);
