@@ -1,7 +1,7 @@
 import {LOCAL_CACHE_TIME} from '../../core/constants';
 import {useCallback, useMemo, useRef} from 'react';
-import {useLocalStorage} from '../../util/hooks/useLocalStorage';
-import {prefix} from '../../util';
+import {useLocalStorage} from './useLocalStorage';
+import {prefix} from '../index';
 
 export type CacheableData = { lastFetched: number | null; payload: any }
 
@@ -10,7 +10,6 @@ export function useCache() {
     const getInitialState               = () => ({} as { [key: string]: CacheableData & { [k: string]: any } });
     const validateCachedState           = (cachedState: CacheableData) => {
         if (!cachedState?.lastFetched) return false;
-
         return Date.now() - cachedState.lastFetched < LOCAL_CACHE_TIME;
     };
     const initialState                  = useMemo(getInitialState, []);

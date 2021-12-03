@@ -1,17 +1,18 @@
-import {HydratedContact, HydratedLease, I_Property_Lease} from '../../../../../../core/types/models';
+import {HydratedContact, HydratedLease, I_Property_Lease} from '../../../../../../../core/types/models';
 import {contact_selectPrimaryKey, lease_selectPrimaryKey} from './selectors';
 import {hydrateContact, hydrateLease} from './hydration';
 
+export type I_Tenant = {
+    contact: HydratedContact,
+    lease: HydratedLease,
+};
 export type IndexedLeaseAggregate = {
     // todo remove this if a person cannot have more than one lease
     leases: {
         [k: string]: HydratedLease
     },
     contacts: {
-        [k: string]: {
-            contact: HydratedContact,
-            lease: HydratedLease | null,
-        }
+        [k: string]: I_Tenant
     }
 };
 /**
@@ -33,13 +34,16 @@ export function leaseIndexReducer(all: IndexedLeaseAggregate, lease: I_Property_
             const nameleaseid = `${contactid}--${leaseid}`;
 
             const hydratedContact: HydratedContact = Object.assign({}, all.contacts[nameleaseid] ?? {}, hydrateContact(contact, name));
+
             if (hydratedContact.tags.has('PRIMARY')) hydratedLease.primaryContact = nameleaseid;
             if (hydratedContact.tags.has('EMERGENCY')) hydratedLease.emergencyContact = nameleaseid;
-            all.contacts[contactid] = {
-                contact: hydratedContact,
-                lease:   hydratedLease,
 
-            };
+            all.contacts[nameleaseid] =
+                {
+                    contact: hydratedContact,
+                    lease:   hydratedLease,
+                };
+
             hydratedLease.contacts.push(nameleaseid);
         })
 

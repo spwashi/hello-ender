@@ -1,8 +1,8 @@
 import {useCallback, useEffect, useRef, useState} from 'react';
-import {useCache} from './useCache';
-import {useEnvironmentVariable} from '../../core/env';
-import {useToggleCallbacks} from '../../util/hooks/useToggleCallbacks';
-import {EndpointName} from '../../core/endpoints/types';
+import {useCache} from '../../../util/hooks/useCache';
+import {useEnvironmentVariable} from '../../env';
+import {useToggleCallbacks} from '../../../util/hooks/useToggleCallbacks';
+import {EndpointName} from '../types';
 
 /**
  * Immediately attempt to fetch an endpoint, if it exists
