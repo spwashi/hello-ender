@@ -1,5 +1,5 @@
 import {I_Property} from '../../../../../../core/types/models';
-import '../styles/leaseInfo.css';
+import '../styles/leaseInfo.scss';
 import {isLeaseError, usePropertyLeaseIndex} from '../hooks/usePropertyLeaseIndex';
 import {useTenantIndexers} from '../hooks/useTenantIndexers';
 import {TenantInfo} from './TenantInfo';

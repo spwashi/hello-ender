@@ -1,9 +1,11 @@
-import {useCallback, useState} from 'react';
+import {useCallback, useMemo, useState} from 'react';
 import {ActivationContextDispatch, ActivationContextState, createInitialActivationContextState, I_ActivationAction} from '../context';
 import {activationReducer} from '../reducer';
 
 export default function ActivationProvider({children}: { children: any }) {
-    const [state, setState] = useState(createInitialActivationContextState());
+    const initialState      = useMemo(() => Object.assign({}, createInitialActivationContextState(), {exists: true}), []);
+    console.log(initialState)
+    const [state, setState] = useState(initialState);
 
     const dispatch = useCallback((action: I_ActivationAction) => setState(activationReducer(state, action)), [state]);
 

@@ -2,9 +2,15 @@
   border: thick solid red;
   width: 300px;
   display: block;
+  position: relative;
 }
 
 .cardContext .property-body {
+  &:focus-within {
+    transform: scale(1.05);
+
+  }
+
   > .head {
     height: 200px;
     background: blue;
@@ -17,7 +23,20 @@
   }
 
   > button {
+    top: 0;
+    left: 0;
+    background: transparent;
     width: 100%;
+    position: absolute;
+    height: 100%;
+    opacity: 0;
+    transition: opacity .3s;
+    cursor: pointer;
+
+    &:hover {
+      background: white;
+      opacity: .5;
+    }
   }
 }
 

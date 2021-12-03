@@ -2,7 +2,7 @@ import {I_Property} from '../../../../core/types/models';
 
 export const property_selectAddress  = (property: I_Property) => [property.address1, property.address2];
 export const property_selectBaseRent = (property: I_Property) => property.baseRent ?? '$ xx.xx';
-export const property_selectSqft     = (property: I_Property) => property.sqft;
+export const property_selectSqft     = (property: I_Property) => Math.round(100 * property.sqft) / 100;
 
 export const property_selectBaseRentNumber_mut   =
                  (property: I_Property & any & { baseRentNumber?: number }) => {
@@ -10,7 +10,7 @@ export const property_selectBaseRentNumber_mut   =
                          return property.baseRentNumber;
                      }
 
-                     return property.baseRentNumber = +property_selectBaseRent(property).replace((/[$,]/g), '');
+                     return property.baseRentNumber = Math.round(100 * +property_selectBaseRent(property).replace((/[$,]/g), '')) / 100;
                  };
 export const property_selectSqftAnnualPrice_mut  =
                  (property: I_Property & any & { annualSqft?: number }) => {

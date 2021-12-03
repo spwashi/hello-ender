@@ -1,0 +1,23 @@
+.leaseInfoList.byTenant {
+  display: flex;
+  flex-direction: column;
+}
+
+.leaseInfo.byTenant, .leaseInfoList > .head {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  border-top: thin solid #ccc;
+  border-bottom: thin solid #ccc;
+}
+
+.leaseInfo.byTenant {
+  padding: .5rem;
+}
+
+.leaseInfoList > .head {
+  > * {
+    padding: .5rem 0;
+    font-weight: bold;
+    background: rgba(#ccc, .3);
+  }
+}

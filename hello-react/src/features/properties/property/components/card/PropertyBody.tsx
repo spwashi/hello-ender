@@ -1,6 +1,6 @@
 import {useCallback, useContext, useMemo} from 'react';
 import {PropertyContext} from '../../context/context';
-import {ActivationContextDispatch} from '../../../../../context/activation/context';
+import {ActivationContextDispatch, ActivationContextState} from '../../../../../context/activation/context';
 import {property_selectAddress, property_selectBaseRentNumber_mut, property_selectSqft, property_selectSqftAnnualPrice_mut, property_selectSqftMonthlyPrice_mut} from '../../data/selectors';
 
 // Create our number formatter.
@@ -11,9 +11,10 @@ const toMoney        = (n: number) => moneyFormatter.format(n);
  * Displays information about a property
  */
 export function PropertyBody() {
-    const {property} = useContext(PropertyContext)
-    const dispatch   = useContext(ActivationContextDispatch);
-    const activate   = useCallback(() => {
+    const {property}      = useContext(PropertyContext)
+    const activationState = useContext(ActivationContextState);
+    const dispatch        = useContext(ActivationContextDispatch);
+    const activate        = useCallback(() => {
         if (!(property && dispatch)) return;
         dispatch({type: 'activate', payload: property})
     }, [dispatch]);
@@ -26,6 +27,7 @@ export function PropertyBody() {
     if (!property) return null;
     return (
         <div id={`property--${property.id}--body`} className="property-body">
+            <button onClick={activate}>View Property Leases</button>
             <div className="head">
                 <div className="title">{property.name}</div>
             </div>
@@ -45,7 +47,6 @@ export function PropertyBody() {
                          data-unit="sqft/yr">{sqftPriceAn}</div>
                 </div>
             </div>
-            <button onClick={activate}>View Property Leases</button>
         </div>
     )
 }
