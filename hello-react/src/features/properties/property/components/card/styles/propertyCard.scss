@@ -30,7 +30,10 @@
 }
 
 .property-body {
+  border: thin solid #eee;
+
   &:focus-within, &:hover {
+
     transform: scale(1.05);
 
     > button {
@@ -77,9 +80,14 @@
   &.address_rent {
     display: flex;
     justify-content: space-between;
+    background: rgba(173, 216, 230, 0.35);
 
     .address {
       white-space: pre-wrap;
+
+      > div:first-child {
+        font-weight: bold;
+      }
 
       > div:nth-child(2) {
         opacity: .6;
@@ -88,14 +96,16 @@
   }
 
   &.sqftMetrics {
+    background: rgba(173, 216, 230, 0.15);
+    border-top: thin solid #ccc;
+    padding: 1rem .5rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
-    //> * {
-    //}
-
-    .sqft { border-color: mediumvioletred;}
+    .sqft {
+      border-color: mediumvioletred;
+    }
 
     [data-unit] {
     }
