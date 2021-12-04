@@ -1,0 +1,40 @@
+.app {
+  height: 100vh;
+}
+
+.appHeader {
+
+}
+
+.propertyCardListContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.propertyCardList {
+
+}
+
+.propertyLeaseListContainer {
+  summary {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  &:not([open]) {
+    h2:after { content: '  +'; }
+  }
+
+  &[open] {
+    h2:after { content: '  -'; }
+  }
+
+
+  h2 {
+    display: inline-block;
+    line-height: 2em;
+    height: 3rem;
+  }
+}

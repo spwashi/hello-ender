@@ -1,4 +1,4 @@
-import styles from './styles/App.module.css';
+import styles from './styles/App.module.scss';
 import {useEndpointData} from '../../core/endpoints/hooks/useEndpointData';
 import {I_Property} from '../../core/types/models';
 import {findEndpoint} from '../../core/endpoints';

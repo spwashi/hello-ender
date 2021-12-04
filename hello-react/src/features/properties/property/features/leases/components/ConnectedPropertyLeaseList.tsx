@@ -1,6 +1,6 @@
 import {PropertyContextProvider} from '../../../context/components/Provider';
 import {PropertyContextConsumer} from '../../../context/components/Consumer';
-import styles from '../../../../../../components/app/styles/App.module.css';
+import styles from '../../../../../../components/app/styles/App.module.scss';
 import {Helmet} from 'react-helmet';
 import {PropertyLeaseList} from './PropertyLeaseList';
 
@@ -11,14 +11,15 @@ export function ConnectedPropertyLeaseList() {
                 {
                     ({property}) => {
                         if (property) {
+                            const title = property.name + 'Leases';
                             return (
-                                <section className={styles.propertyLeaseListContainer}>
-                                    <h2>{property.name} Leases</h2>
-                                    <Helmet>
-                                        <title>{property.name} Leases</title>
-                                    </Helmet>
-                                    <PropertyLeaseList key={property.id} property={property}/>
-                                </section>
+                                <>
+                                    <Helmet><title>{title}</title></Helmet>
+                                    <details className={styles.propertyLeaseListContainer} open>
+                                        <summary><h2>{title}</h2></summary>
+                                        <PropertyLeaseList key={property.id} property={property}/>
+                                    </details>
+                                </>
                             );
                         } else {return null;}
                     }
