@@ -2,6 +2,7 @@ import {I_Tenant, IndexedLeaseAggregate} from '../packages/indexing/reducer';
 import {useCallback} from 'react';
 import {tenant_selectEndDate, tenant_selectLeaseStatus, tenant_selectName, tenant_selectPrimaryContact, tenant_selectStartDate} from '../data/tenants/selectors';
 import {Indexer} from '../data/tenants/indexers';
+import {useIsMobile} from '../../../../../../util/hooks/useWindowWidth';
 
 /**
  * Returns an array of Indexers, which can select information about a tenant
@@ -9,6 +10,7 @@ import {Indexer} from '../data/tenants/indexers';
  * @param indexedLeaseInfo
  */
 export function useTenantIndexers(indexedLeaseInfo: IndexedLeaseAggregate | undefined) {
+    const isMobile              = useIsMobile();
     const _selectPrimaryContact =
               useCallback((tenant: I_Tenant) => tenant_selectPrimaryContact(tenant, indexedLeaseInfo),
                           [indexedLeaseInfo]);
@@ -47,7 +49,7 @@ export function useTenantIndexers(indexedLeaseInfo: IndexedLeaseAggregate | unde
         tenant_nameIndexer,
         tenant_startDateIndexer,
         tenant_endDateIndexer,
-        tenant_leaseStatusIndexer,
+        !isMobile && tenant_leaseStatusIndexer,
         tenant_primaryContactIndexer,
-    ];
+    ].filter(Boolean) as Indexer[];
 }
