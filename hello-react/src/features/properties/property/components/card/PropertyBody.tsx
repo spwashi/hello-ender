@@ -12,13 +12,13 @@ const toMoney        = (n: number) => moneyFormatter.format(n);
  * Displays information about a property
  */
 export function PropertyBody() {
-    const {property} = useContext(PropertyContext)
-    const isActive   = useContext(ActivationContextState).activeProperty === property;
-    const dispatch   = useContext(ActivationContextDispatch);
-    const activate   = useCallback(() => {
+    const {property}           = useContext(PropertyContext)
+    const isActive             = useContext(ActivationContextState).activeProperty === property;
+    const dispatch             = useContext(ActivationContextDispatch);
+    const advanceActivityState = useCallback(() => {
         if (!(property && dispatch)) return;
-        dispatch({type: 'activate', payload: property})
-    }, [dispatch]);
+        dispatch({type: isActive ? 'deactivate' : 'activate', payload: property})
+    }, [isActive, dispatch]);
 
     const sqftPriceMo = useMemo(() => !property ? null : toMoney(property_selectSqftMonthlyPrice_mut(property)),
                                 [property]);
@@ -37,7 +37,7 @@ export function PropertyBody() {
               );
     return (
         <div id={`property--${property.id}--body`} className={bodyClassName}>
-            <button onClick={activate}>View Property Leases</button>
+            <button onClick={advanceActivityState}>View Property Leases</button>
             <div className="head">
                 <div className="title">{property.name}</div>
             </div>

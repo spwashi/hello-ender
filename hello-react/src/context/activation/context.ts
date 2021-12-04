@@ -7,7 +7,9 @@ export interface I_ActivationContextState {
     exists: boolean
 }
 
-export type I_ActivationAction = { type: 'activate', payload: I_Property }
+export type I_ActivationAction =
+    | { type: 'activate', payload: I_Property }
+    | { type: 'deactivate', payload: I_Property }
 
 export interface I_ActivationContextDispatch {
     (action: I_ActivationAction): void
