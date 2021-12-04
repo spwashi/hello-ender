@@ -15,32 +15,29 @@ function App() {
         <div className={styles.app}>
             <main>
                 <h1>Properties</h1>
-
                 <ActivationProvider>
                     <section className={styles.propertyCardListContainer}>
                         <PropertyList properties={properties}/>
                     </section>
-                    <section className={styles.propertyLeaseListContainer}>
-                        <PropertyContextProvider>
-                            <PropertyContextConsumer>
-                                {
-                                    ({property}) => {
-                                        if (property) {
-                                            return (
-                                                <>
-                                                    <h2>{property.name} Leases</h2>
-                                                    <Helmet>
-                                                        <title>{property.name} Leases</title>
-                                                    </Helmet>
-                                                    <PropertyLeaseList key={property.id} property={property}/>
-                                                </>
-                                            );
-                                        } else {return null;}
-                                    }
+                    <PropertyContextProvider>
+                        <PropertyContextConsumer>
+                            {
+                                ({property}) => {
+                                    if (property) {
+                                        return (
+                                            <section className={styles.propertyLeaseListContainer}>
+                                                <h2>{property.name} Leases</h2>
+                                                <Helmet>
+                                                    <title>{property.name} Leases</title>
+                                                </Helmet>
+                                                <PropertyLeaseList key={property.id} property={property}/>
+                                            </section>
+                                        );
+                                    } else {return null;}
                                 }
-                            </PropertyContextConsumer>
-                        </PropertyContextProvider>
-                    </section>
+                            }
+                        </PropertyContextConsumer>
+                    </PropertyContextProvider>
                 </ActivationProvider>
             </main>
         </div>

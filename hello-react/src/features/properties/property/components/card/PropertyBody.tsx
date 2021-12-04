@@ -1,7 +1,8 @@
 import {useCallback, useContext, useMemo} from 'react';
 import {PropertyContext} from '../../context/context';
-import {ActivationContextDispatch} from '../../../../../context/activation/context';
+import {ActivationContextDispatch, ActivationContextState} from '../../../../../context/activation/context';
 import {property_selectAddress, property_selectBaseRentNumber_mut, property_selectSqft, property_selectSqftAnnualPrice_mut, property_selectSqftMonthlyPrice_mut} from '../../data/selectors';
+import classnames from 'classnames';
 
 // Create our number formatter.
 const moneyFormatter = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'});
@@ -12,6 +13,7 @@ const toMoney        = (n: number) => moneyFormatter.format(n);
  */
 export function PropertyBody() {
     const {property} = useContext(PropertyContext)
+    const isActive   = useContext(ActivationContextState).activeProperty === property;
     const dispatch   = useContext(ActivationContextDispatch);
     const activate   = useCallback(() => {
         if (!(property && dispatch)) return;
@@ -24,9 +26,17 @@ export function PropertyBody() {
                                 [property]);
 
     if (!property) return null;
-    const {isOccupied} = property;
+    const {isOccupied}  = property;
+    const bodyClassName =
+              classnames(
+                  'property-body',
+                  {
+                      occupied: isOccupied,
+                      active:   isActive,
+                  },
+              );
     return (
-        <div id={`property--${property.id}--body`} className={`property-body ${isOccupied ? 'occupied ' : ''}`}>
+        <div id={`property--${property.id}--body`} className={bodyClassName}>
             <button onClick={activate}>View Property Leases</button>
             <div className="head">
                 <div className="title">{property.name}</div>

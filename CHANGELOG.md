@@ -1,5 +1,14 @@
 
 ## React
+
+[0.0.5] - 2021-12-03 - Updated Property Card css
+
+Updated CSS to accommodate for `hover`, `focus-within`, and `active` states
+
+[0.0.4] - 2021-12-03 - Changes from Code Review
+
+Updated markup for accessibility, added media query for mobile
+
 [0.0.3] - 2021-12-03 - Created Staging Environment
 
 Deployed to staging environment: [https://hello-ender.spwashi.com/?hello=ender](https://hello-ender.spwashi.com/?hello=ender)

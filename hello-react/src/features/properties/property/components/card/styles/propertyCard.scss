@@ -14,9 +14,11 @@
     height: 100%;
     width: 100%;
     content: '';
+    pointer-events: none;
   }
 
   &:after {
+    pointer-events: none;
     content: 'Available!';
     transform: rotate(-30deg);
     font-weight: bold;
@@ -32,8 +34,24 @@
 .property-body {
   border: thin solid #eee;
 
-  &:focus-within, &:hover {
+  &:focus-within {
+    .title { text-decoration: underline }
 
+    border-color: desaturate(lighten(#c71585, 30%), 50%);
+    border-width: 2px;
+  }
+
+  &:hover {
+    border-color: desaturate(lighten(#c71585, 30%), 50%);
+    border-width: 5px;
+  }
+
+  &.active {
+    border-color: #c71585;
+    border-width: 5px;
+  }
+
+  &:focus-within, &:hover, &.active {
     transform: scale(1.05);
 
     > button {
@@ -86,12 +104,17 @@
       white-space: pre-wrap;
 
       > div:first-child {
-        font-weight: bold;
+        font-weight: 700;
       }
 
       > div:nth-child(2) {
+        font-weight: 300;
         opacity: .6;
       }
+    }
+
+    .baseRent {
+      font-weight: 500;
     }
   }
 
