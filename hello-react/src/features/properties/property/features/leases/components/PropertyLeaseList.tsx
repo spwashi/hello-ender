@@ -2,8 +2,8 @@ import {I_Property} from '../../../../../../core/types/models';
 import '../styles/leaseInfo.scss';
 import {isLeaseError, usePropertyLeaseIndex} from '../hooks/usePropertyLeaseIndex';
 import {useTenantIndexers} from '../hooks/useTenantIndexers';
-import {TenantInfo} from './TenantInfo';
-import {TenantInfoIndexerHead} from './TenantInfoIndexerHead';
+import {TenantInfo} from './tenant/TenantInfo';
+import {TenantInfoIndexerHead} from './tenant/TenantInfoIndexerHead';
 
 /**
  * Widget that displays information about a property's leases

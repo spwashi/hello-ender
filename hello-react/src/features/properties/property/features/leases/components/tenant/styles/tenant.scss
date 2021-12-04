@@ -1,0 +1,11 @@
+[data-abbreviation] {
+  span:last-child {
+    max-width: 0;
+    display: block;
+    background: red;
+
+    &:before {
+      content: attr(data-abbreviation);
+    }
+  }
+}

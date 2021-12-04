@@ -1,9 +1,20 @@
-import {I_Tenant} from '../packages/indexing/reducer';
-import {Indexer} from '../data/tenants/indexers';
+import {I_Tenant} from '../../packages/indexing/reducer';
+import {Indexer} from '../../data/tenants/indexers';
 import {useCallback} from 'react';
+import './styles/tenant.scss';
 
 function TenantInfoRenderer({children, attr}: { children: any, attr: string }) {
     switch (attr) {
+        case 'tenant':
+            if (typeof children === 'string') {
+                let names = children.split(' ');
+                return (
+                    <div data-abbreviation={names.reverse()[0]?.[0] ?? ''}>{
+                        names.map(name => <span key={name}>{name} </span>)
+                    }</div>
+                )
+            }
+            return children;
         case 'status':
             let color: string;
             switch (children) {

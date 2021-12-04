@@ -1,4 +1,4 @@
-import {Indexer} from '../data/tenants/indexers';
+import {Indexer} from '../../data/tenants/indexers';
 
 /**
  *
