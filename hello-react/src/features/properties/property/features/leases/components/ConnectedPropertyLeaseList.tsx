@@ -11,12 +11,12 @@ export function ConnectedPropertyLeaseList() {
                 {
                     ({property}) => {
                         if (property) {
-                            const title = property.name + 'Leases';
+                            const title = property.name + ' Leases';
                             return (
                                 <>
                                     <Helmet><title>{title}</title></Helmet>
                                     <details className={styles.propertyLeaseListContainer} open>
-                                        <summary><h2>{title}</h2></summary>
+                                        <summary><h2><span>{property.name}</span><span> Leases</span></h2></summary>
                                         <PropertyLeaseList key={property.id} property={property}/>
                                     </details>
                                 </>

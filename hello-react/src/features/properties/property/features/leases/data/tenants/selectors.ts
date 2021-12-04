@@ -18,5 +18,5 @@ export function getEmptyLeaseAggregator() {
 export function tenant_selectPrimaryContact(tenant: I_Tenant, index: IndexedLeaseAggregate = getEmptyLeaseAggregator()) {
     const contactid     = tenant.lease.primaryContact;
     const primaryTenant = index.contacts[contactid ?? 'unknown'];
-    return primaryTenant ? primaryTenant.contact.name : 'unkown';
+    return primaryTenant ? primaryTenant.contact.name : 'unknown';
 }

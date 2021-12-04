@@ -3,15 +3,46 @@
   flex-direction: column;
 }
 
-.leaseInfo.byTenant, .leaseInfoList > .head {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  border-top: thin solid #ccc;
-  border-bottom: thin solid #ccc;
+.leaseInfoList > .head {
+  text-align: center;
 }
 
-.leaseInfo.byTenant {
+.leaseInfo.byTenant, .leaseInfoList > .head {
+  display: grid;
+  border-top: thin solid #ccc;
+  border-bottom: thin solid #ccc;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  @media screen and (max-width: 600px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.leaseInfo {
+  &.status--expired { background: rgba(red, .05); }
+
+  &.status--upcoming { background: rgba(blue, .05); }
+
+  &.status--active { background: rgba(green, .05); }
+}
+
+.leaseInfo {
   padding: .5rem;
+
+  time {
+    text-align: center;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tenant, .primaryContact {
+    text-align: center;
+  }
+
+  .status {
+    text-align: center;
+    opacity: .5;
+  }
+
 }
 
 .leaseInfoList > .head {
