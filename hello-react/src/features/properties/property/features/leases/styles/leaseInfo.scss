@@ -1,6 +1,17 @@
 .leaseInfoList.byTenant {
   display: flex;
   flex-direction: column;
+
+  .body:empty {
+    text-align: center;
+    padding: 1rem;
+
+    &:before {
+      content: 'this list is empty';
+      font-style: italic;
+      opacity: .3;
+    }
+  }
 }
 
 .leaseInfoList > .head {

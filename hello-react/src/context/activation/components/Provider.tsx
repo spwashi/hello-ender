@@ -3,7 +3,7 @@ import {ActivationContextDispatch, ActivationContextState, createInitialActivati
 import {activationReducer} from '../reducer';
 
 export default function ActivationProvider({children}: { children: any }) {
-    const initialState      = useMemo(() => Object.assign({}, createInitialActivationContextState(), {exists: true}), []);
+    const initialState = useMemo(() => Object.assign({}, createInitialActivationContextState(), {exists: true}), []);
     console.log(initialState)
     const [state, setState] = useState(initialState);
 

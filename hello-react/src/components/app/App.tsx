@@ -13,6 +13,7 @@ function App() {
 
     return (
         <div className={styles.app}>
+            <header><a href="https://spwashi.com/?from=hello-ender-app">spwashi.com</a></header>
             <main>
                 <h1>Properties</h1>
                 <ActivationProvider>

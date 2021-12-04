@@ -37,7 +37,7 @@ export function PropertyLeaseList({property}: { property: Pick<I_Property, 'id'>
     return (
         <div className="leaseInfoList byTenant">
             <div className="head">{headElements}</div>
-            <div className="body">{bodyElements}</div>
+            <div className="body">{bodyElements.length ? bodyElements : null}</div>
         </div>
     )
 }
