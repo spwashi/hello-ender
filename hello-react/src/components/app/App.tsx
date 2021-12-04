@@ -16,6 +16,7 @@ function App() {
             <header><a href="https://spwashi.com/?from=hello-ender-app">spwashi.com</a></header>
             <main>
                 <h1>Properties</h1>
+                <p>Select a property for more information.</p>
                 <ActivationProvider>
                     <section className={styles.propertyCardListContainer}>
                         <PropertyList properties={properties}/>
