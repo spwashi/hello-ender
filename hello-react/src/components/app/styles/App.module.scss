@@ -1,6 +1,15 @@
 .app {
   height: 100vh;
 
+  main > h1 {
+    padding: 1rem;
+    border-bottom: thin solid #ccc;
+  }
+
+  main > p {
+    padding: 1rem;
+  }
+
   > header {
     width: 100%;
     border-bottom: thick solid #41c7d1;
