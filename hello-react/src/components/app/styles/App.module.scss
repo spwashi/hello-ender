@@ -21,14 +21,28 @@
     display: block;
     width: 100%;
     text-align: center;
+    padding: .5rem;
+    cursor: pointer;
+
+    &:active, &:focus-within, &:hover {
+      background: rgba(lightblue, .3);
+    }
+  }
+
+  h2 {
+    &:after {
+      pointer-events: none;
+      margin-left: 1rem;
+      opacity: .3;
+    }
   }
 
   &:not([open]) {
-    h2:after { content: '  +'; }
+    h2:after { content: '+'; }
   }
 
   &[open] {
-    h2:after { content: '  -'; }
+    h2:after { content: '-'; }
   }
 
 
