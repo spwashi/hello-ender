@@ -3,6 +3,7 @@ import {PropertyContext} from '../../context/context';
 import {ActivationContextDispatch, ActivationContextState} from '../../../../../context/activation/context';
 import {property_selectAddress, property_selectBaseRentNumber_mut, property_selectSqft, property_selectSqftAnnualPrice_mut, property_selectSqftMonthlyPrice_mut} from '../../data/selectors';
 import classnames from 'classnames';
+import './styles/property.scss';
 
 // Create our number formatter.
 const moneyFormatter = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'});

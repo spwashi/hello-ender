@@ -10,9 +10,7 @@ export function PropertyContextProvider({property, children}: { property?: I_Pro
         property: property ?? activeProperty ?? undefined,
         active:   activeProperty === property,
     }), [property, activeProperty]);
-    return (
-        <PropertyContext.Provider value={propertyState} key={activeProperty?.id}>
-            {children}
-        </PropertyContext.Provider>
-    )
+    return (<PropertyContext.Provider value={propertyState} key={activeProperty?.id}>{
+        children
+    }</PropertyContext.Provider>)
 }
