@@ -12,13 +12,18 @@ export const PropertyList =
                          const isMobile         = useIsMobile();
                          const {activeProperty} = useContext(ActivationContextState)
                          if (!properties) return <>Loading...</>;
-                         let listItems = properties.map(
-                             property =>
-                                 <li key={property.id}>
-                                     <PropertyCard property={property}/>
-                                     {isMobile && activeProperty === property ? <ConnectedPropertyLeaseList/> : null}
-                                 </li>,
-                         );
+                         const listItems =
+                                   properties.map(
+                                       property => {
+                                           const displayLeases = isMobile && activeProperty === property;
+                                           return (
+                                               <li key={property.id}>
+                                                   <PropertyCard property={property}/>
+                                                   {displayLeases ? <ConnectedPropertyLeaseList/> : null}
+                                               </li>
+                                           );
+                                       },
+                                   );
                          return <ul className={styles.propertyCardList}>{listItems}</ul>;
                      },
                  );
