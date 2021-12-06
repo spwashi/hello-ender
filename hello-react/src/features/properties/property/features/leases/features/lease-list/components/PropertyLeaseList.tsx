@@ -1,11 +1,11 @@
-import {I_Property} from '../../../../../../core/types/models';
-import '../styles/leaseInfo.scss';
-import {isLeaseError, usePropertyLeaseIndex} from '../hooks/usePropertyLeaseIndex';
-import {useTenantIndexers} from '../hooks/useTenantIndexers';
-import {TenantInfo} from './tenant/TenantInfo';
-import {TenantInfoIndexerHead} from './tenant/TenantInfoIndexerHead';
+import {I_Property} from '../../../../../../../../core/types/models';
+import '../../../styles/leaseInfo.scss';
+import {isLeaseError, usePropertyLeaseIndex} from '../../../hooks/usePropertyLeaseIndex';
+import {useTenantIndexers} from '../../../hooks/useTenantIndexers';
+import {TenantInfo} from '../../tenant/features/body/components/TenantInfo';
+import {TenantInfoHeading} from '../../tenant/features/heading/components/TenantInfoHeading';
 import {StatusLegend} from './StatusLegend';
-import {useAllPossibleStatusesBasedOnIndexedLeases} from '../hooks/useAllPossibleStatusesBasedOnIndexedLeases';
+import {useAllPossibleStatusesBasedOnIndexedLeases} from '../../../hooks/useAllPossibleStatusesBasedOnIndexedLeases';
 
 /**
  * Widget that displays information about a property's leases
@@ -20,10 +20,10 @@ export function PropertyLeaseList({property}: { property: Pick<I_Property, 'id'>
     const representedStatuses = useAllPossibleStatusesBasedOnIndexedLeases(index);
 
     if (indexHasError) {
-        return <div>Error</div>
+        return <div><pre>{JSON.stringify(index)}</pre></div>
     }
 
-    const headElements = indexers.map(indexer => <TenantInfoIndexerHead
+    const headElements = indexers.map(indexer => <TenantInfoHeading
         key={indexer[0].className}
         head={indexer[0]}
     />);

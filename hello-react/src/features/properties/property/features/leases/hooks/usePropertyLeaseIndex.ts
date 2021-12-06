@@ -22,7 +22,11 @@ export function usePropertyLeaseIndex(property: Pick<I_Property, 'id'> & Partial
     const indexedLeaseInfo = useMemo(() => rawLeaseInfo?.reduce(leaseIndexReducer, getEmptyLeaseAggregator()), [rawLeaseInfo]);
 
     if (isLeaseError(rawLeaseInfo) || !rawLeaseInfo) {
-        return rawLeaseInfo ?? new Error('undefined error');
+        const emptyLeaseInfo: IndexedLeaseAggregate = {
+            leases:   {},
+            contacts: {},
+        };
+        return rawLeaseInfo ?? emptyLeaseInfo;
     }
 
     return indexedLeaseInfo as IndexedLeaseAggregate;

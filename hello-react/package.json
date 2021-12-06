@@ -30,7 +30,10 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "no-lone-blocks": "off"
+    }
   },
   "browserslist": {
     "production": [

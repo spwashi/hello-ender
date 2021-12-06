@@ -19,7 +19,7 @@ export function PropertyBody() {
     const advanceActivityState = useCallback(() => {
         if (!(property && dispatch)) return;
         dispatch({type: isActive ? 'deactivate' : 'activate', payload: property})
-    }, [isActive, dispatch]);
+    }, [isActive, dispatch, property]);
 
     const sqftPriceMo = useMemo(() => !property ? null : toMoney(property_selectSqftMonthlyPrice_mut(property)),
                                 [property]);
@@ -51,11 +51,26 @@ export function PropertyBody() {
                     <div className="baseRent">{toMoney(property_selectBaseRentNumber_mut(property))}</div>
                 </div>
                 <div className="infoGroup sqftMetrics">
-                    <div className="sqft" data-unit="sqft.">{property_selectSqft(property)}</div>
-                    <div className="css-price-calc price-sqft-mo" data-currency="$"
-                         data-unit="sqft/mo">{sqftPriceMo}</div>
-                    <div className="css-price-calc price-sqft-yr" data-currency="$"
-                         data-unit="sqft/yr">{sqftPriceAn}</div>
+                    <div
+                        className="sqft"
+                        data-unit="sqft."
+                    >
+                        {property_selectSqft(property)}
+                    </div>
+                    <div
+                        className="price-sqft-mo"
+                        data-currency="$"
+                        data-unit="sqft/mo"
+                    >
+                        {sqftPriceMo}
+                    </div>
+                    <div
+                        className="price-sqft-yr"
+                        data-currency="$"
+                        data-unit="sqft/yr"
+                    >
+                        {sqftPriceAn}
+                    </div>
                 </div>
             </div>
         </div>

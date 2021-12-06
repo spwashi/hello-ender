@@ -77,10 +77,11 @@ export function useEndpointData<Return = any>(endpoint: EndpointName | null): Re
             return () => { doIgnoreResponse = true };
         },
         [
-            endpoint, setEndpointData,
-            cache.ref,
+            endpoint,
+            setEndpointData,
+            cache,
             fetching,
-            cache.add, cache.validate, fetchEndpoint,
+            fetchEndpoint,
         ],
     );
 

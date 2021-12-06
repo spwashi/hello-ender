@@ -9,23 +9,6 @@
   main > p {
     padding: 1rem;
   }
-
-  > header {
-    width: 100%;
-    border-bottom: thick solid #41c7d1;
-
-    a {
-      color: white;
-
-      &:visited {
-        color: antiquewhite;
-      }
-
-      display: inline-block;
-      padding: 1rem;
-      background: #41c7d1;
-    }
-  }
 }
 
 .appHeader {
@@ -44,14 +27,20 @@
 
 .propertyLeaseListContainer {
   summary {
-    display: block;
-    text-align: center;
+    text-align: left;
     padding: .5rem;
     cursor: pointer;
+    text-decoration: underline;
+
+    > * {display: inline-block;}
 
     &:active, &:focus-within, &:hover {
       background: rgba(lightblue, .3);
     }
+  }
+
+  summary + div {
+    padding: 1rem;
   }
 
   h2 {
@@ -69,15 +58,6 @@
       font-size: .95em;
     }
   }
-
-  &:not([open]) {
-    h2:after { content: '+'; }
-  }
-
-  &[open] {
-    h2:after { content: '-'; }
-  }
-
 
   h2 {
     display: inline-block;

@@ -2,7 +2,7 @@ import {I_Property} from '../../../../../core/types/models';
 import styles from './styles/propertyCardList.module.scss';
 import {PropertyCard} from '../card/PropertyCard';
 import React, {useContext} from 'react';
-import {ConnectedPropertyLeaseList} from '../../features/leases/components/ConnectedPropertyLeaseList';
+import {ConnectedPropertyLeaseList} from '../../features/leases/features/lease-list/control/ConnectedPropertyLeaseList';
 import {useIsMobile} from '../../../../../util/hooks/useWindowWidth';
 import {ActivationContextState} from '../../../../../context/activation/context';
 

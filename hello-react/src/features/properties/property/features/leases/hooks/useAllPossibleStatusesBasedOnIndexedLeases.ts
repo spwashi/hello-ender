@@ -9,8 +9,9 @@ import {useMemo} from 'react';
  */
 export function useAllPossibleStatusesBasedOnIndexedLeases(index: IndexedLeaseAggregate | Error): Set<string> {
     const indexHasError = isLeaseError(index);
+    const leases        = !indexHasError ? index.leases : null;
     return useMemo(() => !indexHasError
-                         ? new Set(Object.values(index.leases).map(lease => lease.status))
-                         : new Set,
-                   [!indexHasError ? index?.leases : null]);
+                         ? new Set(Object.values(leases ?? {}).map(lease => lease.status))
+                         : new Set(),
+                   [leases, indexHasError]);
 }

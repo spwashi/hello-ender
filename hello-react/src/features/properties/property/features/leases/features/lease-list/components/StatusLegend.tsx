@@ -4,6 +4,13 @@ function toTitle(status: string): string {
 function getClassNameForStatus(status: string): string {
     return `status--${(`${status}`).toLowerCase()}`;
 }
+
+/**
+ * Represents a set of statuses
+ *
+ * @param statuses
+ * @constructor
+ */
 export function StatusLegend({statuses}: { statuses: Set<string> }) {
     return <>{
         Array.from(statuses)
@@ -12,9 +19,7 @@ export function StatusLegend({statuses}: { statuses: Set<string> }) {
                      const title     = toTitle(status);
                      const className = getClassNameForStatus(status);
                      return (
-                         <div key={title} data-legendKey={title} className={className}>{
-                             title
-                         }</div>
+                         <div key={title} data-legendkey={title} className={className}><span>{title}</span></div>
                      );
                  },
              )
