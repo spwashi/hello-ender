@@ -32,7 +32,10 @@
     cursor: pointer;
     text-decoration: underline;
 
-    > * {display: inline-block;}
+    > * {
+      display: inline-block;
+      padding: 0;
+    }
 
     &:active, &:focus-within, &:hover {
       background: rgba(lightblue, .3);

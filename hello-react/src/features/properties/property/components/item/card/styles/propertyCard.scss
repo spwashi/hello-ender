@@ -2,35 +2,22 @@
   width: 300px;
   display: block;
   position: relative;
+}
 
-  .property-body {
-    transition: transform .3s;
+.cardContext .property-body {
+  > .head {
+    height: 200px;
+    background: rgba(#ccc, .3);
+    color: white;
 
-    > .head {
-      height: 200px;
-      background: rgba(#ccc, .3);
-      color: white;
-
-      .title {
-        padding: .5em;
-        font-size: 2rem;
-        background: rgba(#333, .7);
-      }
+    .title {
+      padding: .5em;
+      font-size: 2rem;
+      background: rgba(#333, .7);
     }
   }
 }
 
-.cardContext .property-body > button {
-  top: 0;
-  left: 0;
-  background: transparent;
-  width: 100%;
-  position: absolute;
-  height: 100%;
-  opacity: 0;
-  transition: opacity .3s;
-  cursor: pointer;
-}
 
 .infoGroup {
   display: flex;

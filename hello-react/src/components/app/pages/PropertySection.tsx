@@ -1,7 +1,7 @@
-import {useIsMobile} from '../../util/hooks/useWindowWidth';
-import {PropertyContextConsumer} from '../../features/properties/property/context/components/Consumer';
-import {ConnectedPropertyName} from '../../features/properties/property/components/ConnectedPropertyName';
-import {ConnectedPropertyLeaseList} from '../../features/properties/property/features/leases/features/lease-list/control/ConnectedPropertyLeaseList';
+import {useIsMobile} from '../../../util/hooks/useWindowWidth';
+import {PropertyContextConsumer} from '../../../features/properties/property/context/components/Consumer';
+import {ConnectedPropertyName} from '../../../features/properties/property/components/ConnectedPropertyName';
+import {ConnectedPropertyLeaseList} from '../../../features/properties/property/features/leases/features/lease-list/control/ConnectedPropertyLeaseList';
 
 export function PropertySection() {
     const isMobile = useIsMobile();

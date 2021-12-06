@@ -3,9 +3,9 @@ import {useEndpointData} from '../../core/endpoints/hooks/useEndpointData';
 import {I_Property} from '../../core/types/models';
 import {findEndpoint} from '../../core/endpoints';
 import ActivationProvider from '../../context/activation/components/Provider';
-import {PropertyList} from '../../features/properties/property/components/list/PropertyList';
 import {PropertyContextProvider} from '../../features/properties/property/context/components/Provider';
-import {PropertySection} from './PropertySection';
+import {PropertySection} from './pages/PropertySection';
+import {PropertyList} from '../../features/properties/property/import';
 
 function App() {
     const properties = useEndpointData<I_Property[] | null>(findEndpoint({route: 'properties/'}));

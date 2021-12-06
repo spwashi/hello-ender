@@ -1,11 +1,11 @@
-import {I_Property} from '../../../../../core/types/models';
-import {PropertyContextProvider} from '../../context/components/Provider';
-import {PropertyBody} from './PropertyBody';
+import {I_Property} from '../../../../../../core/types/models';
+import {PropertyContextProvider} from '../../../context/components/Provider';
+import PropertyBody from '../Body';
 import './styles/propertyCard.scss';
 import {useContext} from 'react';
-import {ActivationContextState} from '../../../../../context/activation/context';
+import {ActivationContextState} from '../../../../../../context/activation/context';
 import classNames from 'classnames';
-import classes from './styles/_util/active.module.scss';
+import classes from './styles/states/active.module.scss';
 
 /**
  * Card version of a Property
@@ -13,7 +13,7 @@ import classes from './styles/_util/active.module.scss';
  * @param property
  * @constructor
  */
-export function PropertyCard({property}: { property: I_Property }) {
+export default function Card({property}: { property: I_Property }) {
     const isActive  = useContext(ActivationContextState).activeProperty === property;
     const className = classNames({[classes.active]: isActive});
     return (

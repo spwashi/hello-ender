@@ -3,7 +3,6 @@ import {PropertyContext} from '../../context/context';
 import {ActivationContextDispatch, ActivationContextState} from '../../../../../context/activation/context';
 import {property_selectAddress, property_selectBaseRentNumber_mut, property_selectSqft, property_selectSqftAnnualPrice_mut, property_selectSqftMonthlyPrice_mut} from '../../data/selectors';
 import classnames from 'classnames';
-import './styles/property.scss';
 
 // Create our number formatter.
 const moneyFormatter = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'});
@@ -12,7 +11,7 @@ const toMoney        = (n: number) => moneyFormatter.format(n);
 /**
  * Displays information about a property
  */
-export function PropertyBody() {
+export default function Body() {
     const {property}           = useContext(PropertyContext)
     const isActive             = useContext(ActivationContextState).activeProperty === property;
     const dispatch             = useContext(ActivationContextDispatch);
